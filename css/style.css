@@ -2,7 +2,14 @@ body {
     background-color : #FEF8F0;
   }
 
+ nav {
+    background-color : #FEF8F0;
+  }
 
+
+.myStories{
+    color :#F25B61
+}
 
  * {
     -webkit-box-sizing: border-box;
