@@ -20,9 +20,9 @@ require("includes/navbar.php");
 <section class="vh-100 align-items-center">
   <div class="mask d-flex align-items-center h-100">
     <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100" id="formulaire">
+      <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 20px; ">
+          <div class="card formulaireInscription">
             <div class="card-body p-2">
               <h2 class="text-uppercase text-center mb-2 pt-2">Créer un compte</h2></br>
 
@@ -55,7 +55,7 @@ require("includes/navbar.php");
                   <button type="button" class="btn-hover color-11">S'INSCRIRE</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="#!" class="fw-bold text-body"><u>Connecte toi ici!</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="connexion.php" class="fw-bold text-body"><u>Connecte toi ici!</u></a></p>
 
               </form>
 
