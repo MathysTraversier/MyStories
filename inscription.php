@@ -45,14 +45,14 @@ require("includes/navbar.php");
                   <label class="form-label" for="form3Example4cg"></label>
                 </div>
 
-                <div class="form-outline w-75 mx-auto mb-2">
+                <div class="form-outline w-75 mx-auto mb-4">
                   CONFIRMER VOTRE MOT DE PASSE
                   <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cdg"></label>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn-hover color-11">S'INSCRIRE</button>
+                  <a class="btn btn-sm me-2" id="btnValidate" href="#" type="button">S'INSCRIRE</a>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="connexion.php" class="fw-bold text-body"><u>Connecte toi ici!</u></a></p>
