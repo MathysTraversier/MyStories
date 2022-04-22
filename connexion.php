@@ -23,13 +23,13 @@
               <div class="card-body p-2">
                 <h2 class="text-uppercase text-center mb-2 pt-1">CONNEXION</h2></br>
 
-                <div class="form-outline w-100 mb-2">
+                <div class="form-outline w-75 mx-auto mb-2">
                   E-MAIL
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example3cg"></label>
                 </div>
 
-                <div class="form-outline w-100 mb-2">
+                <div class="form-outline w-75 mx-auto mb-2">
                   MOT DE PASSE
                   <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cg"></label>
