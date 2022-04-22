@@ -23,23 +23,25 @@
               <div class="card-body p-2">
                 <h2 class="text-uppercase text-center mb-2 pt-1">CONNEXION</h2></br>
 
-                <div class="form-outline w-75 mx-auto mb-2">
-                  E-MAIL
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg"></label>
-                </div>
+                <form method="POST" action="#">
+                  <div class="form-outline w-75 mx-auto mb-2">
+                    E-MAIL
+                    <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" required />
+                    <label class="form-label" for="form3Example3cg"></label>
+                  </div>
 
-                <div class="form-outline w-75 mx-auto mb-2">
-                  MOT DE PASSE
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg"></label>
-                </div>
 
-                <div class="d-flex justify-content-center">
-                  <button type="button" class="btn-hover color-11">SE CONNECTER</button>
-                </div>
+                  <div class="form-outline w-75 mx-auto mb-2">
+                    MOT DE PASSE
+                    <input name="password" type="password" id="form3Example4cg" class="form-control form-control-lg" required />
+                    <label class="form-label" for="form3Example4cg"></label>
+                  </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Pas encore inscrit? <a href="#!" class="fw-bold text-body"><u>Inscrit toi ici!</u></a></p>
+                  <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn-hover color-11" value="SE CONNECTER" />
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Pas encore inscrit ?<a href="#!" class="fw-bold text-body"><u>Inscris toi ici!</u></a></p>
 
                 </form>
 

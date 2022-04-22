@@ -35,13 +35,13 @@ require("includes/connect.php");
                         </div>
                         <div class="col-8">
                             <div class="p-3">
-                                <h3><a class="storyTitle" href="story.php?id=<?= $movie['sto_id'] ?>"><?= $story['sto_title'] ?></a></h3>
+                                <h3 class="storyTitle"><?= $story['sto_title'] ?></h3>
                                 <p class="storyContent"><?= $story['sto_description_long'] ?></p>
                             </div>
                         </div>
                         <div class="col-1">
                             <div class="p-3 mt-5">
-                                <a href="#" class="btn btn-sm btnRouge">Démarrer</a>
+                                <a href="story.php?id=<?= $movie['sto_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
                             </div>
                         </div>
                         <div class="col-1">
