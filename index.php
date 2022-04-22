@@ -10,7 +10,7 @@ require("includes/connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>MyStories</title>
 </head>
 
 <body>
@@ -28,9 +28,29 @@ require("includes/connect.php");
         foreach ($stories as $story) {
         ?>
             <article class="mb-5 story">
-                <img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100px" />
-                <h3><a class="storyTitle" href="story.php?id=<?= $movie['sto_id'] ?>"><?= $story['sto_title'] ?></a></h3>
-                <p class="storyContent"><?= $story['sto_description_long'] ?></p>
+                <div class="container px-4">
+                    <div class="row gx-1">
+                        <div class="col-2">
+                            <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100px" /></div>
+                        </div>
+                        <div class="col-8">
+                            <div class="p-3">
+                                <h3><a class="storyTitle" href="story.php?id=<?= $movie['sto_id'] ?>"><?= $story['sto_title'] ?></a></h3>
+                                <p class="storyContent"><?= $story['sto_description_long'] ?></p>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="p-3 mt-5">
+                                <a href="#" class="btn btn-sm btnRouge">Démarrer</a>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="p-3 mt-5">
+                                <img src="images/tableau-statistique.png" width="32px" alt="Stats" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
         <?php
         }

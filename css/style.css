@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'chivo';
+    src: url(fonts/Chivo/Chivo-Regular.ttf),
+        url(fonts/Chivo/Chivo-Light.ttf),
+        url(fonts/Chivo/Chivo-Black.ttf),
+        url(fonts/Chivo/Chivo-BlackItalic.ttf),
+        url(fonts/Chivo/Chivo-Bold.ttf),
+        url(fonts/Chivo/Chivo-BoldItalic.ttf),
+        url(fonts/Chivo/Chivo-Italic.ttf),
+        url(fonts/Chivo/Chivo-LightItalic.ttf);
+}
+
 body {
     background-color : #FEF8F0;
   }
@@ -6,9 +18,9 @@ body {
     background-color : #FEF8F0;
   }
 
-
-.myStories{
-    color :#F25B61
+#myStories{
+    color :#F25B61;
+    font-family: 'chivo';
 }
 
  * {
@@ -138,5 +150,27 @@ article a{
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+.btnRouge{
+    background-color: #F25B61;
+    color: white;
+    border-radius: 5px;
+}
+
+#btnInscription{
+    background-color: #FFCECE;
+    border-radius: 5px;
+}
+
+#btnInscription:hover{
+    background-color: #e79d9d;
+    color: #fffdf6;
+}
+
+.storyTitle{
+    color: #F25B61;
+    font-weight: bold;
+    font-size: 20px;
 }
 
