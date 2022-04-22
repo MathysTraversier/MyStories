@@ -23,7 +23,7 @@
               <div class="card-body p-2">
                 <h2 class="text-uppercase text-center mb-2 pt-1">CONNEXION</h2></br>
 
-                <form method="POST" action="#">
+                <form method="POST" action="verification.php">
                   <div class="form-outline w-75 mx-auto mb-2">
                     E-MAIL
                     <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" required />

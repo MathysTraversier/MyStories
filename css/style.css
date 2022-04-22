@@ -134,3 +134,26 @@ article a{
     font-size: 20px;
 }
 
+.formulaireConnexion{
+    border-radius: 10px;
+    background-color: #FEF2E0;
+    border: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position :relative; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+    width: 600px;
+}
+
+.formulaireInscription{
+    border-radius: 10px;
+    background-color: #FEF2E0;
+    border: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position :relative; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    width: 600px;
+}
