@@ -18,8 +18,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $response = $bdd->prepare($requete);
             $response->execute(array($_POST['email'], $_POST['password']));
 
-            $nom = $response->fetch();
-            $_SESSION['user'] = $nom;
+            $user = $response->fetch();
+            $_SESSION['user'] = $user['usr_name'];
+            $lives = $user['usr_lives'];
             header('Location: index.php');
         } else {
             header('Location: connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
