@@ -16,7 +16,8 @@ create table user (
     usr_name varchar(50) not null,
     usr_email varchar(100) not null,
     usr_password varchar(88) not null,
-    usr_lives integer
+    usr_lives integer not null,
+    usr_admin boolean not null
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table step (

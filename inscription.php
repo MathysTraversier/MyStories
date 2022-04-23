@@ -26,36 +26,47 @@ require("includes/navbar.php");
             <div class="card-body p-2">
               <h2 class="text-uppercase text-center mb-2 pt-2">Créer un compte</h2></br>
 
-              <form>
+              <form method="POST" action="validation.php">
+
+                <?php
+                if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+                ?>
+                  <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
+                    Veuillez saisir deux mots de passe semblables.
+                  </div>
+                <?php
+                }
+                ?>
+
                 <div class="form-outline w-75 mx-auto mb-2">
                   NOM
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg " />
+                  <input name="username" type="text" id="form3Example1cg" class="form-control form-control-lg " />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline w-75 mx-auto mb-2">
                   E-MAIL
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example3cg"></label>
                 </div>
 
                 <div class="form-outline w-75 mx-auto mb-2">
                   MOT DE PASSE
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <input name="password" type="password" id="form3Example4cg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cg"></label>
                 </div>
 
                 <div class="form-outline w-75 mx-auto mb-4">
                   CONFIRMER VOTRE MOT DE PASSE
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <input name="confirmPassword" type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cdg"></label>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <a class="btn btn-sm me-2" id="btnValidate" href="#" type="button">S'INSCRIRE</a>
+                  <input class="btn btn-sm me-2" id="btnValidate" type="submit" value="S'INSCRIRE" />
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="connexion.php" class="fw-bold text-body"><u>Connecte toi ici!</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="connexion.php" class="fw-bold text-body"> <u>Connecte-toi ici!</u></a></p>
 
               </form>
 

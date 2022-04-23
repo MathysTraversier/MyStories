@@ -24,6 +24,17 @@
                 <h2 class="text-uppercase text-center mb-2 pt-1">CONNEXION</h2></br>
 
                 <form method="POST" action="verification.php">
+
+                  <?php
+                  if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+                  ?>
+                    <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
+                      Identifiant ou mot de passe incorrect.
+                    </div>
+                  <?php
+                  }
+                  ?>
+
                   <div class="form-outline w-75 mx-auto mb-2">
                     E-MAIL
                     <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" required />
@@ -38,10 +49,10 @@
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <a class="btn btn-sm me-2" id="btnValidate" href="#" type="button">SE CONNECTER</a>
+                    <input class="btn btn-sm me-2" id="btnValidate" type="submit" value="SE CONNECTER" />
                   </div>
 
-                  <p class="text-center text-muted mt-5 mb-0">Pas encore inscrit ?<a href="inscription.php" class="fw-bold text-body"><u>Inscris toi ici!</u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0">Pas encore inscrit ?<a href="inscription.php" class="fw-bold text-body"> <u>Inscris-toi ici!</u></a></p>
 
                 </form>
 
