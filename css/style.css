@@ -10,6 +10,16 @@
         url(fonts/Chivo/Chivo-LightItalic.ttf);
 }
 
+@font-face {
+    font-family: 'Hammersmith_one';
+    src: url(fonts/Hammersmith_One/HammersmithOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Didact_gothic';
+    src: url(fonts/Didact_Gothic/DidactGothic-Regular.ttf);
+}
+
 body {
     background-color : #FEF8F0;
   }
@@ -138,7 +148,7 @@ article a{
     border-radius: 10px;
     background-color: #FEF2E0;
     border: none;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Didact_gothic;
     position :relative; 
     top: 50%;
     left: 50%;
