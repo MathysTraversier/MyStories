@@ -31,7 +31,7 @@ require("includes/connect.php");
                 <div class="container px-4">
                     <div class="row gx-1">
                         <div class="col-2">
-                            <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100px" /></div>
+                            <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100" height="150" /></div>
                         </div>
                         <div class="col-8">
                             <div class="p-3">

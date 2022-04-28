@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-require("includes/connect.php");
-?>
 <html lang="fr">
 
 <head>
@@ -26,10 +23,10 @@ require("includes/connect.php");
     ?>
     <div class="container text-center">
         <div class="card pageStats pt-5 pb-5">
-            <h3 class="titrePageStat">STATISTIQUES DE L'HISTOIRE</h3>
+            <h3 class="titrePage">STATISTIQUES DE L'HISTOIRE</h3>
             <div class="row mt-5">
                 <div class="col-5">
-                    <img class="rounded float-end" src="images/<?= $data['sto_image'] ?>" width="150px" />
+                    <img class="rounded float-end" src="images/<?= $data['sto_image'] ?>" width="150px" height="250px" />
                 </div>
                 <div class="col-7 text-start">
                     <h4 class="mb-5"><?= $data['sto_title'] ?></h4>
@@ -45,7 +42,7 @@ require("includes/connect.php");
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -166,7 +166,7 @@ article a{
     margin-bottom: 10px;
 }
 
-.titrePageStat{
+.titrePage{
     color: #F25B61;
     font-family: 'Hammersmith_one';
 }
@@ -182,4 +182,13 @@ h4{
     border: none;
     font-family: Didact_gothic;
     width: 700px;
+}
+
+.pageStory{
+    border-radius: 10px;
+    margin: auto;
+    background-color: #FEF2E0;
+    border: none;
+    font-family: Didact_gothic;
+    width: 900px;
 }
