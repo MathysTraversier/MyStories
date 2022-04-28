@@ -10,7 +10,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $response->execute(array($_POST['email'], $_POST['password']));
         $data = $response->fetch();
         $count = $data['count(*)'];
-        echo $count;
         if ($count != 0) // nom d'utilisateur et mot de passe correctes
         {
             $requete = "SELECT usr_name FROM user WHERE usr_email=? AND usr_password=?";

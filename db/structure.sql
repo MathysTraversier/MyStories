@@ -6,9 +6,11 @@ drop table if exists choice;
 create table story (
     sto_id integer not null primary key auto_increment,
     sto_title varchar(100) not null,
-    sto_description_short varchar(500) not null,
-    sto_description_long varchar(2000) not null,
-    sto_image varchar(150)
+    sto_description varchar(2000) not null,
+    sto_image varchar(150),
+    sto_played integer DEFAULT 0 not null,
+    sto_start varchar(2000)
+
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table user (

@@ -36,17 +36,17 @@ require("includes/connect.php");
                         <div class="col-8">
                             <div class="p-3">
                                 <h3 class="storyTitle"><?= $story['sto_title'] ?></h3>
-                                <p class="storyContent"><?= $story['sto_description_long'] ?></p>
+                                <p class="storyContent"><?= $story['sto_description'] ?></p>
                             </div>
                         </div>
                         <div class="col-1">
                             <div class="p-3 mt-5">
-                                <a href="story.php?id=<?= $movie['sto_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
+                                <a href="story.php?id=<?= $story['sto_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
                             </div>
                         </div>
                         <div class="col-1">
                             <div class="p-3 mt-5">
-                                <img src="images/tableau-statistique.png" width="32px" alt="Stats" />
+                                <a href="stats.php?id=<?= $story['sto_id'] ?>"><img src="images/tableau-statistique.png" width="32px" alt="Stats" /></a>
                             </div>
                         </div>
                     </div>

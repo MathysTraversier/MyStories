@@ -145,26 +145,11 @@ article a{
 }
 
 .formulaireConnexion{
+    margin: auto;
     border-radius: 10px;
     background-color: #FEF2E0;
     border: none;
     font-family: Didact_gothic;
-    position :relative; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -15%);
-    width: 600px;
-}
-
-.formulaireInscription{
-    border-radius: 10px;
-    background-color: #FEF2E0;
-    border: none;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    position :relative; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -5%);
     width: 600px;
 }
 
@@ -181,11 +166,20 @@ article a{
     margin-bottom: 10px;
 }
 
-.stats{
-    background-color: #FEF2E0;
-}
-
 .titrePageStat{
     color: #F25B61;
     font-family: 'Hammersmith_one';
+}
+
+h4{
+    font-size: 20px;
+}
+
+.pageStats{
+    border-radius: 10px;
+    margin: auto;
+    background-color: #FEF2E0;
+    border: none;
+    font-family: Didact_gothic;
+    width: 700px;
 }

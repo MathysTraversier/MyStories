@@ -22,9 +22,9 @@ require("includes/navbar.php");
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card formulaireInscription">
+          <div class="card formulaireConnexion mt-5 mb-5" style="border-radius: 15px;">
             <div class="card-body p-2">
-              <h2 class="text-uppercase text-center mb-2 pt-2">Créer un compte</h2></br>
+              <h2 class="text-uppercase text-center mb-2 pt-1">Créer un compte</h2></br>
 
               <form method="POST" action="validation.php">
 
@@ -66,7 +66,7 @@ require("includes/navbar.php");
                   <input class="btn btn-sm me-2" id="btnValidate" type="submit" value="S'INSCRIRE" />
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Déja inscrit? <a href="connexion.php" class="fw-bold text-body"> <u>Connecte-toi ici!</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Déjà inscrit? <a href="connexion.php" class="fw-bold text-body"> <u>Connecte-toi ici!</u></a></p>
 
               </form>
 
