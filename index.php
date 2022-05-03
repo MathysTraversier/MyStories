@@ -36,6 +36,9 @@ require("includes/connect.php");
                         <div class="col-8">
                             <div class="p-3">
                                 <h3 class="storyTitle"><?= $story['sto_title'] ?></h3>
+                                <img src="images/hide.png" width="25px" alt="Cacher_Histoire" id="cacher"/>
+                                <img src="images/edit(1).png" width="21px" alt="Modifier_Histoire" id="modifier"/>
+                                <img src="images/bouton-supprimer(1).png" width="21px" alt="Modifier_Histoire" id="supprimer"/>
                                 <p class="storyContent"><?= $story['sto_description'] ?></p>
                             </div>
                         </div>

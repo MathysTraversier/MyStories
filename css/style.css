@@ -192,3 +192,15 @@ h4{
     font-family: Didact_gothic;
     width: 900px;
 }
+
+#supprimer{
+    padding : 5px;
+}
+
+#cacher{
+    padding : 5px;
+}
+
+#modifier{
+    padding : 5px;
+}
