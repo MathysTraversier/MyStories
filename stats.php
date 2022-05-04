@@ -21,6 +21,8 @@
     $response->execute(array($_GET['id']));
     $data = $response->fetch();
     ?>
+
+
     <div class="container text-center">
         <div class="card pageStats pt-5 pb-5">
             <h3 class="titrePage">STATISTIQUES DE L'HISTOIRE</h3>
