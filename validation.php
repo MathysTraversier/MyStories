@@ -12,7 +12,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                 'lives' => 3,
                 'administrator' => false
             ));
-            header('Location: index.php');
+            header('Location: connexion.php');
         } else {
             header('Location: inscription.php?erreur=1'); // utilisateur ou mot de passe incorrect
         }

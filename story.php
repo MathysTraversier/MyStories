@@ -15,11 +15,35 @@
     require("includes/connect.php");
     require("includes/navbar.php");
 
+    if (isset($_GET['sto_id']) && isset($_GET['ste_id'])) {
+        $_SESSION['sto_id'] = $_GET['sto_id'];
+        $_SESSION['ste_id'] = $_GET['ste_id'];
+
+        $requete = "TRUNCATE TABLE usr_choice";
+        $response = $bdd->prepare($requete);
+        $response->execute();
+    }
+
     $requete = "SELECT * FROM story where 
               sto_id = ?";
     $response = $bdd->prepare($requete);
-    $response->execute(array($_GET['id']));
+    $response->execute(array($_SESSION['sto_id']));
     $data = $response->fetch();
+
+    $requete = "SELECT * FROM step where sto_id = ? AND ste_id = ?";
+    $response = $bdd->prepare($requete);
+    $response->execute(array($_SESSION['sto_id'], $_SESSION['ste_id']));
+    $step = $response->fetch();
+
+    $requete = "SELECT * FROM usr_choice";
+    $response = $bdd->prepare($requete);
+    $response->execute();
+    $usr_choices = $response->fetchAll();
+
+    $requete = "SELECT DISTINCT * FROM choice where cho_ste = ? AND (cho_related is null OR cho_related IN (SELECT cho_id FROM usr_choice))";
+    $response = $bdd->prepare($requete);
+    $response->execute(array($step['ste_choiceType']));
+    $choices = $response->fetchAll();
     ?>
 
     <div class="container mt-5">
@@ -27,14 +51,34 @@
             <h3 class="titrePage text-center"><?= $data['sto_title'] ?></h3>
             <div class="row mt-5">
                 <div class="col">
-                    <p><?= $data['sto_start'] ?></p>
+                    <p><?= $step['ste_description'] ?></p>
                 </div>
             </div>
-            <div class="row">
-
+            <div class="row text-center mt-3">
+                <?php
+                foreach ($choices as $choice) {
+                ?>
+                    <div class="col">
+                        <a href="addChoiceBDD.php?ste_id=<?= $choice['ste_id'] ?>&cho_id=<?= $choice['cho_id'] ?>" class="btn btn-sm me-2 btnRouge p-3"><?= $choice['cho_description'] ?></a>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
+            <?php
+            if ($step['ste_end']) {
+            ?>
+                <div class="row text-center mt-3">
+                    <div class="col">
+                        <a href="" class="btn btn-sm me-2 btnRouge p-3">Terminer l'histoire</a>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

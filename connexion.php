@@ -49,7 +49,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <input class="btn btn-sm me-2" id="btnValidate" type="submit" value="SE CONNECTER" />
+                    <input class="btn btn-sm me-2 btnRouge p-2" type="submit" value="SE CONNECTER" />
                   </div>
 
                   <p class="text-center text-muted mt-5 mb-0">Pas encore inscrit? <a href="inscription.php" class="fw-bold text-body">Inscris-toi ici!</a></p>

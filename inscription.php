@@ -63,7 +63,7 @@ require("includes/navbar.php");
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <input class="btn btn-sm me-2" id="btnValidate" type="submit" value="S'INSCRIRE" />
+                  <input class="btn btn-sm me-2 btnRouge p-2" type="submit" value="S'INSCRIRE" />
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Déjà inscrit? <a href="connexion.php" class="fw-bold text-body"> <u>Connecte-toi ici!</u></a></p>

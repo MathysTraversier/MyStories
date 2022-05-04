@@ -33,24 +33,46 @@ require("includes/connect.php");
                         <div class="col-2">
                             <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100" height="150" /></div>
                         </div>
-                        <div class="col-8">
-                            <div class="p-3">
-                                <h3 class="storyTitle"><?= $story['sto_title'] ?></h3>
-                                <p class="storyContent"><?= $story['sto_description'] ?></p>
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                        ?>
+                            <div class="col-8">
+                            <?php
+                        } else {
+                            ?>
+                                <div class="col-10">
+                                <?php
+                            }
+                                ?>
+                                <div class="p-3">
+                                    <h3 class="storyTitle"><?= $story['sto_title'] ?></h3>
+                                    <p class="storyContent"><?= $story['sto_description'] ?></p>
+                                </div>
+                                </div>
+                                <?php
+                                if (isset($_SESSION['user'])) {
+                                ?>
+                                    <div class="col-1">
+                                        <div class="p-3 mt-5">
+                                            <?php
+                                            $requete = "SELECT * FROM step where sto_id = ? AND ste_start = ?";
+                                            $response = $bdd->prepare($requete);
+                                            $response->execute(array($story['sto_id'], true));
+                                            $start = $response->fetch();
+                                            ?>
+                                            <a href="story.php?sto_id=<?= $story['sto_id'] ?>&ste_id=<?= $start['ste_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="p-3 mt-5">
+                                            <a href="stats.php?id=<?= $story['sto_id'] ?>"><img src="images/tableau-statistique.png" width="32px" alt="Stats" /></a>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                             </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="p-3 mt-5">
-                                <a href="story.php?id=<?= $story['sto_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="p-3 mt-5">
-                                <a href="stats.php?id=<?= $story['sto_id'] ?>"><img src="images/tableau-statistique.png" width="32px" alt="Stats" /></a>
-                            </div>
-                        </div>
                     </div>
-                </div>
             </article>
         <?php
         }
