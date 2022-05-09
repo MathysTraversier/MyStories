@@ -36,8 +36,8 @@
                   ?>
 
                   <div class="form-outline w-75 mx-auto mb-2">
-                    E-MAIL
-                    <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" required />
+                    IDENTIFIANT (E-MAIL OU NOM)
+                    <input name="email" type="text" id="form3Example3cg" class="form-control form-control-lg" required />
                     <label class="form-label" for="form3Example3cg"></label>
                   </div>
 

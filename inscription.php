@@ -29,14 +29,29 @@ require("includes/navbar.php");
               <form method="POST" action="validation.php">
 
                 <?php
-                if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+                if (isset($_GET['erreur'])) {
+                  if ($_GET['erreur'] == 1) {
                 ?>
-                  <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
-                    Veuillez saisir deux mots de passe semblables.
-                  </div>
+                    <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
+                      Veuillez saisir deux mots de passe semblables.
+                    </div>
+                  <?php
+                  } else if ($_GET['erreur'] == 2) {
+                  ?>
+                    <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
+                      Utilisateur déjà existant. Veuillez saisir une nouvelle adresse mail ou vous connecter.
+                    </div>
+                  <?php
+                  } else {
+                  ?>
+                    <div class="form-outline w-75 mx-auto mb-2 text-center text-danger">
+                      Veuillez remplir tous les champs.
+                    </div>
                 <?php
+                  }
                 }
                 ?>
+
 
                 <div class="form-outline w-75 mx-auto mb-2">
                   NOM

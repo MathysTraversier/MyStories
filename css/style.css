@@ -167,32 +167,38 @@ h4{
     font-size: 20px;
 }
 
-.pageStats{
+.page{
     border-radius: 10px;
     margin: auto;
     background-color: #FEF2E0;
     border: none;
     font-family: Didact_gothic;
+}
+
+#pageStats{
     width: 700px;
 }
 
-.pageStory{
-    border-radius: 10px;
-    margin: auto;
-    background-color: #FEF2E0;
-    border: none;
-    font-family: Didact_gothic;
+#pageStory{
     width: 900px;
 }
 
-#supprimer{
-    padding : 5px;
+#pageCreation{
+    width: 700px;
 }
 
-#cacher{
-    padding : 5px;
+#nbParagraphes{
+    width: 100px;
 }
 
-#modifier{
-    padding : 5px;
+.admin{
+    color: black;
+}
+
+.admin:hover{
+    color: #8C8C8C;
+}
+
+.active{
+    color: #F25B61;
 }

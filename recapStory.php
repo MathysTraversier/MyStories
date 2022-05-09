@@ -14,22 +14,57 @@
     <?php
     require("includes/connect.php");
     require("includes/navbar.php");
+
+    $requete = "SELECT choice.cho_description FROM choice, usr_choice WHERE usr_choice.cho_id = choice.cho_id";
+    $response = $bdd->prepare($requete);
+    $response->execute();
+    $choices = $response->fetchAll();
     ?>
 
     <div class="container mt-5">
         <div class="card pageStory p-5">
-            <h3 class="titrePage text-center">RECAPITULATIF DE VOS CHOIX</h3>
+            <h3 class="titrePage text-center">RECAPITULATIF DE L'HISTOIRE</h3>
+            <div class="row mt-5">
+                <?php
+                if (isset($_SESSION['ste_victory'])) {
+                    if (!$_SESSION['ste_victory']) {
+                ?>
+                        <div class="col">
+                            <p> Vous êtes arrivés à la fin de l'histoire ! Malheureusement vous n'avez pas fait les bons choix pour vous mener à la victoire. Voici le parcours que vous avez décidé d'emprunter :</p>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="col">
+                            <p> Vous êtes arrivés à la fin de l'histoire ! Vos choix stratégiques vous ont mené à la victoire. Félicitations ! Voici le parcours que vous avez décidé d'emprunter :</p>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+            </div>
             <div class="row mt-5">
                 <div class="col">
-                    <p> Vous êtes arrivé à la fin de l'histoire ! Malheureusement vous n'avez pas fait les bons choix pour vous mener à la victoire. Vous pouvez désormais revenir à la page d'accueil pour sélectionner une nouvelle histoire ou rejouer cette histoire.</p>
-                </div>
-
-                <div>
-                    <p> Vous êtes arrivé à la fin de l'histoire ! Vos choix stratégiques vous ont mené à la victoire. Félicitations ! Vous pouvez désormais revenir à la page d'accueil pour sélectionner une nouvelle histoire</p>
+                    <ul>
+                        <?php
+                        foreach ($choices as $choice) {
+                        ?>
+                            <li><?= $choice['cho_description'] ?></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-
+            <div class="row mt-5">
+                <div class="col">
+                    <p>Si vous n’êtes pas satisfait du chemin que vous avez emprunté, il est encore temps de rejouer l’histoire ! Sinon, d’autres histoires vous attendent sur la page d’accueil.</p>
+                </div>
+            </div>
+            <div class="row text-center mt-5">
+                <div class="col">
+                    <a href="story.php?sto_id=<?= $_SESSION['sto_id'] ?>&ste_id=1" class="btn btn-sm me-2 btnRouge p-3">Rejouer l'histoire</a>
+                </div>
             </div>
         </div>
     </div>

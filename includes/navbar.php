@@ -9,6 +9,11 @@ session_start();
             MyStories
         </a>
         <?php
+        if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+        ?>
+            <a href="creationHistoire.php" class="btn btn-sm me-2 btnRouge p-1">Créer une nouvelle histoire</a>
+        <?php
+        }
         if (!isset($_SESSION['user'])) {
         ?>
             <div class="navbar-right">

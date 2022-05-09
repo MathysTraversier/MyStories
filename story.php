@@ -22,6 +22,17 @@
         $requete = "TRUNCATE TABLE usr_choice";
         $response = $bdd->prepare($requete);
         $response->execute();
+
+        $requete = "SELECT sto_played FROM story where 
+              sto_id = ?";
+        $response = $bdd->prepare($requete);
+        $response->execute(array($_SESSION['sto_id']));
+        $data = $response->fetch();
+
+        $requete = "UPDATE story SET sto_played = ? where 
+                sto_id = ?";
+        $response = $bdd->prepare($requete);
+        $response->execute(array($data['sto_played'] + 1, $_SESSION['sto_id']));
     }
 
     $requete = "SELECT * FROM story where 
@@ -47,7 +58,7 @@
     ?>
 
     <div class="container mt-5">
-        <div class="card pageStory p-5">
+        <div id="pageStory" class="card page p-5">
             <h3 class="titrePage text-center"><?= $data['sto_title'] ?></h3>
             <div class="row mt-5">
                 <div class="col">
@@ -67,10 +78,11 @@
             </div>
             <?php
             if ($step['ste_end']) {
+                $_SESSION['ste_victory'] = $step['ste_victory'];
             ?>
                 <div class="row text-center mt-3">
                     <div class="col">
-                        <a href="" class="btn btn-sm me-2 btnRouge p-3">Terminer l'histoire</a>
+                        <a href="recapStory.php" class="btn btn-sm me-2 btnRouge p-3">Terminer l'histoire</a>
                     </div>
                 </div>
             <?php
