@@ -39,9 +39,9 @@ insert into choice (cho_ste,cho_name,cho_description,ste_id) values
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
 ("B","avecLeash", "Surfer avec leash", 5);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("C","avecCreme", "Mettre de la crème solaire", 6);
+("C","avecCreme", "Mettre de la crème solaire", 7);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("C","sansCreme", "Ne pas mettre de crème solaire", 7);
+("C","sansCreme", "Ne pas mettre de crème solaire", 6);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
 ("D","prendreVague", "Prendre la vague", 8);
 insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
