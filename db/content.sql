@@ -1,7 +1,7 @@
 insert into story values
 (1, "Près de l'océan", "Vous incarnez un jeune surfeur de 21 ans. Il a pour habitude de prendre sa voiture et d’aller à l’eau tous les jours. En effet, Thomas à la chance d’habiter proche de la plage de Hossegor. Embarquez avec Thomas dans cette folle aventure !", "Affiche_Ocen.png", 0, 0);
 insert into story values
-(2, "Vice-Versa", "Vice-versa ou Sens dessus dessous au Québec (Inside Out) est le 133e long-métrage d'animation des studios Disney et le 15e long-métrage de Pixar. Réalisé en images de synthèse par Pete Docter et Ronnie del Carmen, il est sorti en 2015.", "vice-versa.jpg", 0, 0);
+(2, "Asphalte", "Alice est une skateuse bordelaise qui adore s'entraîner après les cours. Elle a pour habitude de se rendre aux skatepark Darwin et à celui des Chartrons. Venez découvrir le quotidien riche en actions d'Alice.", "Affiche_Skate", 0, 0);
 insert into story values
 (3, "Babysitting", "Babysitting est un film français réalisé par Philippe Lacheau et Nicolas Benamou, sorti en 2014. Il s'agit du premier film interprété par une grande partie de La Bande à Fifi, troupe révélée par Canal+. C'est le premier film français à allier prises de vues traditionnelles et found footage, à l'image de Projet X.", "babysitting.jpg", 0, 0);
 
