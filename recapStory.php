@@ -22,7 +22,7 @@
     ?>
 
     <div class="container mt-5">
-        <div class="card pageStory p-5">
+        <div id="pageStory" class="card page p-5">
             <h3 class="titrePage text-center">RECAPITULATIF DE L'HISTOIRE</h3>
             <div class="row mt-5">
                 <?php
