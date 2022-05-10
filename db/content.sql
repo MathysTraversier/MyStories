@@ -1,5 +1,5 @@
 insert into story values
-(1, "Près de l'océan", "Vous incarnez un jeune surfeur de 21 ans. Il a pour habitude de prendre sa voiture et d’aller à l’eau tous les jours. En effet, Thomas à la chance d’habiter proche de la plage de Hossegor. Embarquez avec Thomas dans cette folle aventure !", "Affiche_Ocen.png", 0, 0);
+(1, "Près de l'océan", "Vous incarnez un jeune surfeur de 21 ans. Il a pour habitude de prendre sa voiture et d’aller à l’eau tous les jours. En effet, Thomas à la chance d’habiter proche de la plage de Hossegor. Embarquez avec Thomas dans cette folle aventure !", "Affiche_Ocean.png", 0, 0);
 insert into story values
 (2, "Asphalte", "Alice est une skateuse bordelaise qui adore s'entraîner après les cours. Elle a pour habitude de se rendre aux skatepark Darwin et à celui des Chartrons. Venez découvrir le quotidien riche en actions d'Alice.", "Affiche_Skate", 0, 0);
 insert into story values
