@@ -97,16 +97,29 @@ require("includes/connect.php");
                                     }
                                     ?>
                                 </div>
+
                         </div>
                 </article>
         <?php
             }
         }
         ?>
+        <div class="row text-center pb-5 gx-1">
+            <div class="col">
+                <?php
+                if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                ?>
+                    <a href="creationHistoire.php" class="btn btn-sm me-2 btnRouge p-3">Créer une nouvelle histoire</a>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+
 
         <hr />
 
-        <footer class="footer text-center">
+        <footer class="footer text-center pb-5">
             Construit avec ❤ par Léna et Mathys</a>.
         </footer>
     </div>

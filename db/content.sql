@@ -1,7 +1,7 @@
 insert into story values
 (1, "Près de l'océan", "Vous incarnez un jeune surfeur de 21 ans. Il a pour habitude de prendre sa voiture et d’aller à l’eau tous les jours. En effet, Thomas à la chance d’habiter proche de la plage de Hossegor. Embarquez avec Thomas dans cette folle aventure !", "Affiche_Ocean.png", 0, 0);
 insert into story values
-(2, "Asphalte", "Alice est une skateuse bordelaise qui adore s'entraîner après les cours. Elle a pour habitude de se rendre aux skatepark Darwin et à celui des Chartrons. Venez découvrir le quotidien riche en actions d'Alice.", "Affiche_Skate", 0, 0);
+(2, "Asphalte", "Alice est une skateuse bordelaise qui adore s'entraîner après les cours. Elle a pour habitude de se rendre aux skatepark Darwin et à celui des Chartrons. Venez découvrir le quotidien riche en actions d'Alice.", "Affiche_Skate.png", 0, 0);
 insert into story values
 (3, "Babysitting", "Babysitting est un film français réalisé par Philippe Lacheau et Nicolas Benamou, sorti en 2014. Il s'agit du premier film interprété par une grande partie de La Bande à Fifi, troupe révélée par Canal+. C'est le premier film français à allier prises de vues traditionnelles et found footage, à l'image de Projet X.", "babysitting.jpg", 0, 0);
 
@@ -19,6 +19,8 @@ insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,st
 ("Thomas hésite à peine et repars directement à l’eau, il fait nuageux de toute façon. Il regarde l’heure sur son téléphone : 7h36. Il a encore 2h pour surfer avant son cours à 10h10. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
 ("Bien que Thomas soit frustré d'avoir cassé son leash et dû interrompre sa session pour revenir au van, il connaît l’importance de se crémer pour éviter les insolations. Il regarde l’heure sur son téléphone : 7h36. Il a encore le temps de surfer avant son cours à 10h10. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
+insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
+("Bien que Thomas soit frustré d'avoir cassé son leash et dû interrompre sa session pour revenir au van, il connaît l’importance de se crémer pour éviter les insolations. Il met donc de la crème solaire et repart à l’eau. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
 ("Thomas se place pour prendre la vague, rame énergiquement et se lève sur sa planche. La première vague de la journée est bonne, il dévale la pente. Mais il s'aperçoit trop tard que l’autre surfer a lui aussi décidé de s’engager. La collision est inévitable. Les planches s’entrechoquent, la dérive de Thomas se brise. Thomas a mal suite au choc. (perte de PV). Il s'énerve contre l’autre surfer qui n’a pas l’air de comprendre qu’il est en tort. Thomas explique pourquoi il n’aurait pas dû prendre la vague. L’autre surfeur s’échauffe, commence à parler fort et insulte Thomas.", "E", false, true, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
@@ -38,20 +40,22 @@ insert into choice (cho_ste,cho_name,cho_description,ste_id) values
 ("B","sansLeash", "Surfer sans leash", 4);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
 ("B","avecLeash", "Surfer avec leash", 5);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("C","avecCreme", "Mettre de la crème solaire", 6);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("C","sansCreme", "Ne pas mettre de crème solaire", 7);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("D","prendreVague", "Prendre la vague", 8);
 insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("D", 5, "pasPrendreVagueAC", "Ne pas prendre la vague", 9);
+("C", 1,"avecCreme", "Mettre de la crème solaire", 7);
 insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("D", 6, "pasPrendreVagueSC", "Ne pas prendre la vague", 10);
+("C", 2,"avecCreme", "Mettre de la crème solaire", 8);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("E","colere", "S'énerver et pousser le surfer", 11);
+("C","sansCreme", "Ne pas mettre de crème solaire", 6);
 insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("E","chill", "Rester chill", 12);
+("D","prendreVague", "Prendre la vague", 9);
+insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
+("D", 5, "pasPrendreVagueAC", "Ne pas prendre la vague", 10);
+insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
+("D", 6, "pasPrendreVagueSC", "Ne pas prendre la vague", 11);
+insert into choice (cho_ste,cho_name,cho_description,ste_id) values
+("E","colere", "S'énerver et pousser le surfer", 12);
+insert into choice (cho_ste,cho_name,cho_description,ste_id) values
+("E","chill", "Rester chill", 13);
 
 insert into user (usr_name,usr_email,usr_password,usr_admin) values
 ("correcteur","blabla@gmail.com","mdp_correcteur_1234",0);
