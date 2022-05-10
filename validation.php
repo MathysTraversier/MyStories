@@ -15,7 +15,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                     'email' => $_POST['email'],
                     'pass' => $_POST['password'],
                     'lives' => 3,
-                    'administrator' => false
+                    'administrator' => 0
                 ));
                 header('Location: connexion.php');
             } else {
