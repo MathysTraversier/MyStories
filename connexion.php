@@ -23,7 +23,7 @@
               <div class="card-body p-2">
                 <h2 class="text-uppercase text-center mb-2 pt-1">CONNEXION</h2></br>
 
-                <form method="POST" action="verification.php">
+                <form method="POST" action="traitement/verification.php">
 
                   <?php
                   if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {

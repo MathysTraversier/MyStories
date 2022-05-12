@@ -27,7 +27,7 @@ session_start();
                             </svg> </span><?= $_SESSION['user'] ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="../COMWEB_coulon_traversier_2022/deconnexion.php">Se déconnecter</a></li>
+                            <li><a class="dropdown-item" href="../traitement/deconnexion.php">Se déconnecter</a></li>
                         </ul>
                     </li>
                 </ul>

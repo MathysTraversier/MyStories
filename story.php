@@ -16,27 +16,6 @@
     require("includes/connect.php");
     require("includes/navbar.php");
 
-    if (isset($_GET['sto_id']) && isset($_GET['ste_id'])) {
-        $_SESSION['lives'] = 2;
-        $_SESSION['sto_id'] = $_GET['sto_id'];
-        $_SESSION['ste_id'] = $_GET['ste_id'];
-
-        $requete = "TRUNCATE TABLE usr_choice";
-        $response = $bdd->prepare($requete);
-        $response->execute();
-
-        $requete = "SELECT sto_played FROM story where 
-              sto_id = ?";
-        $response = $bdd->prepare($requete);
-        $response->execute(array($_SESSION['sto_id']));
-        $data = $response->fetch();
-
-        $requete = "UPDATE story SET sto_played = ? where 
-                sto_id = ?";
-        $response = $bdd->prepare($requete);
-        $response->execute(array($data['sto_played'] + 1, $_SESSION['sto_id']));
-    }
-
     $requete = "SELECT * FROM story where 
               sto_id = ?";
     $response = $bdd->prepare($requete);
@@ -48,24 +27,42 @@
     $response->execute(array($_SESSION['sto_id'], $_SESSION['ste_id']));
     $step = $response->fetch();
 
-    $requete = "SELECT * FROM usr_choice";
+    $requete = "SELECT * FROM usr_choice, choice WHERE choice.cho_id = usr_choice.cho_id AND choice.sto_id = ?";
     $response = $bdd->prepare($requete);
-    $response->execute();
+    $response->execute(array($_SESSION['sto_id']));
     $usr_choices = $response->fetchAll();
 
-    $requete = "SELECT DISTINCT choice.cho_description, choice.cho_id, relation.ste_id FROM choice, relation where choice.cho_id = relation.cho_id AND choice.cho_ste = ? AND (relation.cho_related is null OR relation.cho_related IN (SELECT cho_id FROM usr_choice))";
+    $requete = "SELECT DISTINCT choice.cho_description, choice.cho_id, relation.ste_id FROM choice, relation where choice.sto_id = ? AND choice.cho_id = relation.cho_id AND choice.cho_ste = ? AND (relation.cho_related is null OR relation.cho_related IN (SELECT cho_id FROM usr_choice))";
     $response = $bdd->prepare($requete);
-    $response->execute(array($step['ste_choiceType']));
+    $response->execute(array($_SESSION['sto_id'], $step['ste_choiceType']));
     $choices = $response->fetchAll();
 
-    if ($step['ste_lossPV']) {
-        $_SESSION['lives']--;
+    if (isset($_SESSION['saveLife']) && !$_SESSION['saveLife']) {
+        if ($step['ste_lossPV']) {
+            $_SESSION['lives']--;
+        } else if ($step['ste_end'] && !$step['ste_victory']) {
+            $_SESSION['lives'];
+        }
     }
+
+    $_SESSION['saveLife'] = false;
+
+    $req = $bdd->prepare('UPDATE `data_story` SET `ste_id` = :step WHERE sto_id = :story AND usr_id = :user');
+    $req->execute(array(
+        'step' => $_SESSION['ste_id'],
+        'story' => $_SESSION['sto_id'],
+        'user' => $_SESSION['userID']
+    ));
+    $req = $bdd->prepare('UPDATE `data_story` SET `lives` = :lives WHERE sto_id = :story AND usr_id = :user');
+    $req->execute(array(
+        'lives' => $_SESSION['lives'],
+        'story' => $_SESSION['sto_id'],
+        'user' => $_SESSION['userID']
+    ));
     ?>
 
     <div class="container mt-5">
-
-        <div id="pageStory" class="card page p-5">
+        <div id="pageStory" class="card page p-5 mb-5">
             <div class="row text-end">
                 <div class="col">
                     <i class="bi bi-suit-heart-fill" style="color: #F25B61;"></i>
@@ -73,25 +70,41 @@
                 </div>
             </div>
             <h3 class=" titrePage text-center"><?= $data['sto_title'] ?></h3>
-            <div class="row mt-5">
-                <div class="col">
-                    <p><?= $step['ste_description'] ?></p>
-                </div>
-            </div>
-            <div class="row text-center mt-3">
-                <?php
-                foreach ($choices as $choice) {
-                ?>
-                    <div class="col">
-                        <a href="addChoiceBDD.php?ste_id=<?= $choice['ste_id'] ?>&cho_id=<?= $choice['cho_id'] ?>" class="btn btn-sm me-2 btnRouge p-3"><?= $choice['cho_description'] ?></a>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
             <?php
-            if ($step['ste_end']) {
-                $_SESSION['ste_victory'] = $step['ste_victory'];
+            if ($_SESSION['lives'] > 0 || ($_SESSION['lives'] == 0 && $step['ste_end'])) {
+            ?>
+                <div class="row mt-5">
+                    <div class="col">
+                        <p><?= $step['ste_description'] ?></p>
+                    </div>
+                </div>
+                <div class="row text-center mt-3">
+                    <?php
+                    foreach ($choices as $choice) {
+                    ?>
+                        <div class="col">
+                            <a href="traitement/addChoiceBDD.php?ste_id=<?= $choice['ste_id'] ?>&cho_id=<?= $choice['cho_id'] ?>" class="btn btn-sm me-2 btnRouge p-3"><?= $choice['cho_description'] ?></a>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            <?php
+            } else {
+            ?>
+                <div class="row mt-5">
+                    <div class="col">
+                        <p>Vous n'avez malheureusement plus de vie, votre personnage n'est plus en état de continuer l'aventure !</p>
+                    </div>
+                </div>
+            <?php
+            }
+            if ($step['ste_end'] || $_SESSION['lives'] == 0) {
+                if ($_SESSION['lives'] > 0) {
+                    $_SESSION['ste_victory'] = $step['ste_victory'];
+                } else {
+                    $_SESSION['ste_victory'] = 0;
+                }
                 if ($_SESSION['ste_victory']) {
                     $req = $bdd->prepare('UPDATE `story` SET `sto_success` = :success WHERE sto_id = :id');
                     $req->execute(array(

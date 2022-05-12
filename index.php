@@ -52,16 +52,16 @@ require("includes/connect.php");
                                         if (isset($_SESSION['admin']) && $_SESSION['admin']) {
                                             if ($story['sto_hidden']) {
                                         ?>
-                                                <a class="admin active" href="cacher.php?sto_id=<?= $story['sto_id'] ?>&sto_hidden=<?= $story['sto_hidden'] ?>"><i class="bi bi-eye-slash-fill me-2" style="font-size: 25px;"></i></a>
+                                                <a class="admin active" href="traitement/cacher.php?sto_id=<?= $story['sto_id'] ?>&sto_hidden=<?= $story['sto_hidden'] ?>"><i class="bi bi-eye-slash-fill me-2" style="font-size: 25px;"></i></a>
                                             <?php
                                             } else {
                                             ?>
-                                                <a class="admin" href="cacher.php?sto_id=<?= $story['sto_id'] ?>&sto_hidden=<?= $story['sto_hidden'] ?>"><i class="bi bi-eye-slash-fill me-2" style="font-size: 25px;"></i></a>
+                                                <a class="admin" href="traitement/cacher.php?sto_id=<?= $story['sto_id'] ?>&sto_hidden=<?= $story['sto_hidden'] ?>"><i class="bi bi-eye-slash-fill me-2" style="font-size: 25px;"></i></a>
                                             <?php
                                             }
                                             ?>
                                             <a class="admin" href="#"><i class="bi bi-pencil-square me-2" style="font-size: 25px;"></i></a>
-                                            <a class="admin" href="delete.php?sto_id=<?= $story['sto_id'] ?>"><i class="bi bi-trash-fill" style="font-size: 25px;"></i></a>
+                                            <a class="admin" href="traitement/delete.php?sto_id=<?= $story['sto_id'] ?>"><i class="bi bi-trash-fill" style="font-size: 25px;"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -78,8 +78,32 @@ require("includes/connect.php");
                                                 $response = $bdd->prepare($requete);
                                                 $response->execute(array($story['sto_id'], true));
                                                 $start = $response->fetch();
+
+                                                $requete = "SELECT * FROM data_story where 
+                                                usr_id = ? AND sto_id = ?";
+                                                $response = $bdd->prepare($requete);
+                                                $response->execute(array($_SESSION['userID'], $story['sto_id']));
+                                                $data = $response->fetch();
+
+                                                if (empty($data)) {
                                                 ?>
-                                                <a href="story.php?sto_id=<?= $story['sto_id'] ?>&ste_id=<?= $start['ste_id'] ?>" class="btn btn-sm btnRouge">Démarrer</a>
+                                                    <a href="traitement/initialisationHistoire.php?sto_id=<?= $story['sto_id'] ?>&ste_id=<?= $start['ste_id'] ?>&new=1" class="btn btn-sm btnRouge">Démarrer</a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <div class="row">
+                                                        <div class="col-1">
+                                                            <a href="traitement/initialisationHistoire.php?sto_id=<?= $story['sto_id'] ?>&ste_id=<?= $data['ste_id'] ?>$new=0" class="btn btn-sm btnRouge">Reprendre</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col-1">
+                                                            <a href="traitement/initialisationHistoire.php?sto_id=<?= $story['sto_id'] ?>&ste_id=<?= $start['ste_id'] ?>&new=1" class="btn btn-sm btnRouge">Redémarrer</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                         <?php

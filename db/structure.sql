@@ -1,4 +1,6 @@
 drop table if exists user;
+drop table if exists relation;
+drop table if exists data_story;
 drop table if exists usr_choice;
 drop table if exists choice;
 drop table if exists step;
@@ -26,7 +28,7 @@ create table step (
     ste_id integer not null primary key auto_increment,
     ste_description varchar(5000) not null,
     ste_start boolean not null,
-    ste_choiceType varchar(1),
+    ste_choiceType integer,
     ste_lossPV boolean not null,
     ste_end boolean not null,
     ste_victory boolean not null,
@@ -36,9 +38,10 @@ create table step (
 
 create table choice (
     cho_id integer not null primary key auto_increment,
-    cho_ste varchar(1) not null,
-    cho_name varchar(50) not null,
-    cho_description varchar(2000) not null
+    cho_ste integer not null,
+    cho_description varchar(2000) not null,
+    sto_id integer not null,
+    foreign key (sto_id) REFERENCES story (sto_id) ON DELETE CASCADE
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table usr_choice (
@@ -52,5 +55,17 @@ create table relation (
     cho_id integer not null,
     cho_related integer DEFAULT null,
     ste_id integer not null,
+    foreign key (cho_id) REFERENCES choice (cho_id) ON DELETE CASCADE,
+    foreign key (cho_related) REFERENCES choice (cho_id) ON DELETE CASCADE,
     foreign key (ste_id) REFERENCES step (ste_id) ON DELETE CASCADE
+) engine=innodb character set utf8 collate utf8_unicode_ci;
+
+create table data_story (
+    data_id integer not null primary key auto_increment,
+    sto_id integer not null,
+    ste_id integer not null,
+    usr_id integer not null,
+    lives integer not null,
+    foreign key (usr_id) REFERENCES user (usr_id) ON DELETE CASCADE,
+    foreign key (sto_id) REFERENCES story (sto_id) ON DELETE CASCADE
 ) engine=innodb character set utf8 collate utf8_unicode_ci;

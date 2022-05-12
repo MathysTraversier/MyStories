@@ -1,5 +1,5 @@
 <?php
-require("includes/connect.php");
+require("../includes/connect.php");
 
 
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmPassword'])) {
@@ -17,16 +17,16 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                     'lives' => 3,
                     'administrator' => 0
                 ));
-                header('Location: connexion.php');
+                header('Location: ../connexion.php');
             } else {
-                header('Location: inscription.php?erreur=1'); // utilisateur ou mot de passe incorrect
+                header('Location: ../inscription.php?erreur=1'); // utilisateur ou mot de passe incorrect
             }
         } else {
-            header('Location: inscription.php?erreur=2'); //utilisateur déjà existant
+            header('Location: ../inscription.php?erreur=2'); //utilisateur déjà existant
         }
     } else {
-        header('Location: inscription.php?erreur=3'); // utilisateur ou mot de passe vide
+        header('Location: ../inscription.php?erreur=3'); // utilisateur ou mot de passe vide
     }
 } else {
-    header('Location: inscription.php');
+    header('Location: ../inscription.php');
 }

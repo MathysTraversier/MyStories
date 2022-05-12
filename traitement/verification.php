@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("includes/connect.php");
+require("../includes/connect.php");
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
@@ -19,15 +19,16 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
             $user = $response->fetch();
             $_SESSION['user'] = $user['usr_name'];
+            $_SESSION['userID'] = $user['usr_id'];
             $_SESSION['admin'] = $user['usr_admin'];
             $_SESSION['lives'] = $user['usr_lives'];
-            header('Location: index.php');
+            header('Location: ../index.php');
         } else {
-            header('Location: connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            header('Location: ../connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
         }
     } else {
-        header('Location: connexion.php?erreur=2'); // utilisateur ou mot de passe vide
+        header('Location: ../connexion.php?erreur=2'); // utilisateur ou mot de passe vide
     }
 } else {
-    header('Location: connexion.php');
+    header('Location: ../connexion.php');
 }

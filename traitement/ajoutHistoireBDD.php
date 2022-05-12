@@ -1,10 +1,10 @@
 <?php
 session_start();
-require("includes/connect.php");
+require("../includes/connect.php");
 
 if (isset($_POST['title']) && isset($_POST['resume']) && isset($_POST['nbParagraphes'])) {
     if (!isset($_FILES['couverture'])) {
-        header('Location: creationHistoire.php?error=1');
+        header('Location: ../creationHistoire.php?error=1');
     } else {
         $uploaddir = 'images/';
         $uploadfile = $uploaddir . basename($_FILES['couverture']['name']);
@@ -23,9 +23,15 @@ if (isset($_POST['title']) && isset($_POST['resume']) && isset($_POST['nbParagra
         'img' => $_FILES['couverture']['name']
     ));
     $_SESSION['nbParagraphes'] = $_POST['nbParagraphes'];
-    $_SESSION['storyTitle'] = $_POST['title'];
-    $_SESSION['creation']++;
-    header('Location: creationHistoire.php');
+
+    $requete = "SELECT sto_id FROM story where sto_title = ?";
+    $response = $bdd->prepare($requete);
+    $response->execute(array($_POST['title']));
+    $step = $response->fetch();
+    $_SESSION['storyID'] = $step['sto_id'];
+
+    $_SESSION['creation'] = 2;
+    header('Location: ../creationHistoire.php');
 } else {
-    header('Location: creationHistoire.php?error=2');
+    header('Location: ../creationHistoire.php?error=2');
 }

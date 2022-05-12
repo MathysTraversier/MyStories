@@ -26,7 +26,7 @@ require("includes/navbar.php");
             <div class="card-body p-2">
               <h2 class="text-uppercase text-center mb-2 pt-1">Créer un compte</h2></br>
 
-              <form method="POST" action="validation.php">
+              <form method="POST" action="traitement/validation.php">
 
                 <?php
                 if (isset($_GET['erreur'])) {

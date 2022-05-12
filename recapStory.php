@@ -15,6 +15,13 @@
     require("includes/connect.php");
     require("includes/navbar.php");
 
+    $requete = 'DELETE FROM data_story WHERE usr_id=:user AND sto_id=:story';
+    $response = $bdd->prepare($requete);
+    $response->execute(array(
+        'user' => $_SESSION['userID'],
+        'story' => $_SESSION['sto_id']
+    ));
+
     $requete = "SELECT choice.cho_description FROM choice, usr_choice WHERE usr_choice.cho_id = choice.cho_id";
     $response = $bdd->prepare($requete);
     $response->execute();
@@ -22,7 +29,7 @@
     ?>
 
     <div class="container mt-5">
-        <div id="pageStory" class="card page p-5">
+        <div id="pageStory" class="card page p-5 mb-5">
             <h3 class="titrePage text-center">RECAPITULATIF DE L'HISTOIRE</h3>
             <div class="row mt-5">
                 <?php
@@ -63,7 +70,7 @@
             </div>
             <div class="row text-center mt-5">
                 <div class="col">
-                    <a href="story.php?sto_id=<?= $_SESSION['sto_id'] ?>&ste_id=1" class="btn btn-sm me-2 btnRouge p-3">Rejouer l'histoire</a>
+                    <a href="traitement/initialisationHistoire.php?sto_id=<?= $_SESSION['sto_id'] ?>&ste_id=<?= $_SESSION['storyStart'] ?>&new=1" class="btn btn-sm me-2 btnRouge p-3">Rejouer l'histoire</a>
                 </div>
             </div>
         </div>
