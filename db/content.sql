@@ -16,7 +16,7 @@ insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,st
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
 ("Thomas retourne au van, et prend un nouveau leash. Il voit le tube de crème solaire, mais il est impatient de retourner à l’eau. Il se demande s’il prend le temps d’en mettre.", "C",false, false, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
-("Thomas hésite à peine et repars directement à l’eau, il fait nuageux de toute façon. Il regarde l’heure sur son téléphone : 7h36. Il a encore 2h pour surfer avant son cours à 10h10. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
+("Thomas hésite à peine et repars directement à l’eau, il fait nuageux de toute façon. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
 ("Bien que Thomas soit frustré d'avoir cassé son leash et dû interrompre sa session pour revenir au van, il connaît l’importance de se crémer pour éviter les insolations. Il regarde l’heure sur son téléphone : 7h36. Il a encore le temps de surfer avant son cours à 10h10. Il commence à ramer en direction du large, première salve de vagues. Il voit quelqu’un s’apprêtant à prendre la même vague que lui. Mais Thomas a la priorité, il hésite à s’engager.", "D", false, false, false, false, 1);
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
@@ -32,30 +32,54 @@ insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,st
 insert into step (ste_description,ste_choiceType,ste_start,ste_lossPV,ste_end,ste_victory,sto_id) values
 ("Thomas décide de rentrer avec sa planche sans dérive. Sa session est un échec mais il préfère ne pas rester. Il sort de l’eau, se change et prend le van pour aller en cours.", null, false, false, true, false, 1);
 
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("A","aube","Partir à l'aube",2);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("A","14h","Partir à 14h", 3);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("B","sansLeash", "Surfer sans leash", 4);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("B","avecLeash", "Surfer avec leash", 5);
-insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("C", 1,"avecCreme", "Mettre de la crème solaire", 7);
-insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("C", 2,"avecCreme", "Mettre de la crème solaire", 8);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("C","sansCreme", "Ne pas mettre de crème solaire", 6);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("D","prendreVague", "Prendre la vague", 9);
-insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("D", 5, "pasPrendreVagueAC", "Ne pas prendre la vague", 10);
-insert into choice (cho_ste,cho_related,cho_name,cho_description,ste_id) values
-("D", 6, "pasPrendreVagueSC", "Ne pas prendre la vague", 11);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("E","colere", "S'énerver et pousser le surfer", 12);
-insert into choice (cho_ste,cho_name,cho_description,ste_id) values
-("E","chill", "Rester chill", 13);
+insert into choice (cho_ste,cho_name,cho_description) values
+("A","aube","Partir à l'aube");
+insert into choice (cho_ste,cho_name,cho_description) values
+("A","14h","Partir à 14h");
+insert into choice (cho_ste,cho_name,cho_description) values
+("B","sansLeash", "Surfer sans leash");
+insert into choice (cho_ste,cho_name,cho_description) values
+("B","avecLeash", "Surfer avec leash");
+insert into choice (cho_ste,cho_name,cho_description) values
+("C","avecCreme", "Mettre de la crème solaire");
+insert into choice (cho_ste,cho_name,cho_description) values
+("C","sansCreme", "Ne pas mettre de crème solaire");
+insert into choice (cho_ste,cho_name,cho_description) values
+("D","prendreVague", "Prendre la vague");
+insert into choice (cho_ste,cho_name,cho_description) values
+("D", "pasPrendreVagueAC", "Ne pas prendre la vague");
+insert into choice (cho_ste,cho_name,cho_description) values
+("E","colere", "S'énerver et pousser le surfer");
+insert into choice (cho_ste,cho_name,cho_description) values
+("E","chill", "Rester chill");
+
+insert into relation (cho_id,cho_related,ste_id) values
+(1, null, 2);
+insert into relation (cho_id,cho_related,ste_id) values
+(2, null, 3);
+insert into relation (cho_id,cho_related,ste_id) values
+(3, null, 4);
+insert into relation (cho_id,cho_related,ste_id) values
+(4, null, 5);
+insert into relation (cho_id,cho_related,ste_id) values
+(5, 1, 7);
+insert into relation (cho_id,cho_related,ste_id) values
+(5, 2, 8);
+insert into relation (cho_id,cho_related,ste_id) values
+(6, null, 6);
+insert into relation (cho_id,cho_related,ste_id) values
+(7, null, 9);
+insert into relation (cho_id,cho_related,ste_id) values
+(8, 5, 10);
+insert into relation (cho_id,cho_related,ste_id) values
+(8, 6, 11);
+insert into relation (cho_id,cho_related,ste_id) values
+(9, null, 12);
+insert into relation (cho_id,cho_related,ste_id) values
+(10, null, 13);
+
+
+
 
 insert into user (usr_name,usr_email,usr_password,usr_admin) values
 ("correcteur","blabla@gmail.com","mdp_correcteur_1234",0);

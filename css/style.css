@@ -22,6 +22,7 @@
 
 body {
     background-color : #FEF8F0;
+    font-size: 14pt;
   }
 
  nav {
@@ -42,6 +43,10 @@ body {
 .buttons {
     margin: 10%;
     text-align: center;
+}
+
+btn-group-sm>.btn, .btn-sm {
+    font-size: 14pt;
 }
 
 .btn-hover {

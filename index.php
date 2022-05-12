@@ -33,16 +33,16 @@ require("includes/connect.php");
                     <div class="container px-4">
                         <div class="row gx-1">
                             <div class="col-2">
-                                <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="100" height="150" /></div>
+                                <div class="p-3"><img class="rounded float-start" src="images/<?= $story['sto_image'] ?>" width="110" height="170" /></div>
                             </div>
                             <?php
                             if (isset($_SESSION['user'])) {
                             ?>
-                                <div class="col-8">
+                                <div class="col-7 align-self-center">
                                 <?php
                             } else {
                                 ?>
-                                    <div class="col-10">
+                                    <div class="col-10 align-self-center">
                                     <?php
                                 }
                                     ?>
@@ -61,7 +61,7 @@ require("includes/connect.php");
                                             }
                                             ?>
                                             <a class="admin" href="#"><i class="bi bi-pencil-square me-2" style="font-size: 25px;"></i></a>
-                                            <a class="admin" href="#"><i class="bi bi-trash-fill" style="font-size: 25px;"></i></a>
+                                            <a class="admin" href="delete.php?sto_id=<?= $story['sto_id'] ?>"><i class="bi bi-trash-fill" style="font-size: 25px;"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -71,8 +71,8 @@ require("includes/connect.php");
                                     <?php
                                     if (isset($_SESSION['user'])) {
                                     ?>
-                                        <div class="col-1">
-                                            <div class="p-3 mt-5">
+                                        <div class="col-2 align-self-center">
+                                            <div class="text-end p-3 mt-5">
                                                 <?php
                                                 $requete = "SELECT * FROM step where sto_id = ? AND ste_start = ?";
                                                 $response = $bdd->prepare($requete);
@@ -85,7 +85,7 @@ require("includes/connect.php");
                                         <?php
                                         if ($_SESSION['admin']) {
                                         ?>
-                                            <div class="col-1">
+                                            <div class="col-1 align-self-center">
                                                 <div class="p-3 mt-5">
                                                     <a href="stats.php?id=<?= $story['sto_id'] ?>"><img src="images/tableau-statistique.png" width="32px" alt="Stats" /></a>
                                                 </div>
@@ -109,7 +109,7 @@ require("includes/connect.php");
                 <?php
                 if (isset($_SESSION['admin']) && $_SESSION['admin']) {
                 ?>
-                    <a href="creationHistoire.php" class="btn btn-sm me-2 btnRouge p-3">Créer une nouvelle histoire</a>
+                    <a href="creationHistoire.php?creation=0" class="btn btn-sm me-2 btnRouge p-3">Créer une nouvelle histoire</a>
                 <?php
                 }
                 ?>

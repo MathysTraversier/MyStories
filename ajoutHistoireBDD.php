@@ -22,7 +22,10 @@ if (isset($_POST['title']) && isset($_POST['resume']) && isset($_POST['nbParagra
         'summary' => $_POST['resume'],
         'img' => $_FILES['couverture']['name']
     ));
-    header('Location: index.php');
+    $_SESSION['nbParagraphes'] = $_POST['nbParagraphes'];
+    $_SESSION['storyTitle'] = $_POST['title'];
+    $_SESSION['creation']++;
+    header('Location: creationHistoire.php');
 } else {
     header('Location: creationHistoire.php?error=2');
 }

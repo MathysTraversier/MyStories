@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <title>MyStories</title>
 </head>
@@ -16,6 +17,7 @@
     require("includes/navbar.php");
 
     if (isset($_GET['sto_id']) && isset($_GET['ste_id'])) {
+        $_SESSION['lives'] = 2;
         $_SESSION['sto_id'] = $_GET['sto_id'];
         $_SESSION['ste_id'] = $_GET['ste_id'];
 
@@ -51,15 +53,26 @@
     $response->execute();
     $usr_choices = $response->fetchAll();
 
-    $requete = "SELECT DISTINCT * FROM choice where cho_ste = ? AND (cho_related is null OR cho_related IN (SELECT cho_id FROM usr_choice))";
+    $requete = "SELECT DISTINCT choice.cho_description, choice.cho_id, relation.ste_id FROM choice, relation where choice.cho_id = relation.cho_id AND choice.cho_ste = ? AND (relation.cho_related is null OR relation.cho_related IN (SELECT cho_id FROM usr_choice))";
     $response = $bdd->prepare($requete);
     $response->execute(array($step['ste_choiceType']));
     $choices = $response->fetchAll();
+
+    if ($step['ste_lossPV']) {
+        $_SESSION['lives']--;
+    }
     ?>
 
     <div class="container mt-5">
+
         <div id="pageStory" class="card page p-5">
-            <h3 class="titrePage text-center"><?= $data['sto_title'] ?></h3>
+            <div class="row text-end">
+                <div class="col">
+                    <i class="bi bi-suit-heart-fill" style="color: #F25B61;"></i>
+                    <?= $_SESSION['lives'] ?>
+                </div>
+            </div>
+            <h3 class=" titrePage text-center"><?= $data['sto_title'] ?></h3>
             <div class="row mt-5">
                 <div class="col">
                     <p><?= $step['ste_description'] ?></p>
@@ -79,6 +92,13 @@
             <?php
             if ($step['ste_end']) {
                 $_SESSION['ste_victory'] = $step['ste_victory'];
+                if ($_SESSION['ste_victory']) {
+                    $req = $bdd->prepare('UPDATE `story` SET `sto_success` = :success WHERE sto_id = :id');
+                    $req->execute(array(
+                        'success' => $data['sto_success'] + 1,
+                        'id' => $data['sto_id']
+                    ));
+                }
             ?>
                 <div class="row text-center mt-3">
                     <div class="col">
