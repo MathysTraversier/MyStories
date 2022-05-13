@@ -242,14 +242,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row text-center mt-5">
-                        <div class="col">
-                            <input type="submit" name="envoyer" class="btn btn-sm me-2 btnRouge p-3" value="Envoyer" />
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-5">
+                            <input type="submit" name="envoyer" class="btn btn-sm me-2 btnRouge" value="Continuer à saisir mes choix" />
                         </div>
-                    </div>
-                    <div class="row text-end mt-5">
-                        <div class="col">
-                            <input type="submit" name="suivant" class="btn btn-sm me-2 btnRouge" value="Suivant" />
+                        <div class="col-3">
+                            <input type="submit" name="suivant" class="btn btn-sm me-2 btnRouge" value="Étape suivante" />
                         </div>
                     </div>
                 </form>

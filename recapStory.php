@@ -22,9 +22,9 @@
         'story' => $_SESSION['sto_id']
     ));
 
-    $requete = "SELECT choice.cho_description FROM choice, usr_choice WHERE usr_choice.cho_id = choice.cho_id";
+    $requete = "SELECT choice.cho_description FROM choice, usr_choice WHERE usr_choice.cho_id = choice.cho_id AND choice.sto_id = ?";
     $response = $bdd->prepare($requete);
-    $response->execute();
+    $response->execute(array($_SESSION['sto_id']));
     $choices = $response->fetchAll();
     ?>
 
