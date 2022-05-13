@@ -5,8 +5,8 @@ $username = "mystories_user";
 $password = "secret";
 
 /*$host = "localhost";
-$dbname = "lcoulon001";
-$username = "lcoulon001";
+$dbname = "mtraversier";
+$username = "mtraversier";
 $password = "mystorieslenamathys";*/
 
 try {

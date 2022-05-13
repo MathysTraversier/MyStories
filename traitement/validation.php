@@ -6,15 +6,22 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) {
         $response = $bdd->prepare('SELECT usr_email FROM user');
         $response->execute();
-        $users = $response->fetch();
-        if (!in_array($_POST['email'], $users)) {
+        $users = $response->fetchAll();
+        foreach($users as $user){
+            if($user['user_email'] == $_POST['email']){
+                $ok = 0;
+            }
+        }
+        if(!isset($ok)){
+            $ok = 1;
+        }
+        if (!$ok) {
             if ($_POST['password'] == $_POST['confirmPassword']) {
-                $req = $bdd->prepare('INSERT INTO `user` (`usr_name`, `usr_email`, `usr_password`, `usr_lives`, `usr_admin`) VALUES (:nom,:email,:pass,:lives,:administrator)');
+                $req = $bdd->prepare('INSERT INTO `user` (`usr_name`, `usr_email`, `usr_password`, `usr_admin`) VALUES (:nom,:email,:pass,:administrator)');
                 $req->execute(array(
                     'nom' => $_POST['username'],
                     'email' => $_POST['email'],
-                    'pass' => $_POST['password'],
-                    'lives' => 3,
+                    'pass' => password_hash($_POST['password'], PASSWORD_BCRYPT),
                     'administrator' => 0
                 ));
                 header('Location: ../connexion.php');

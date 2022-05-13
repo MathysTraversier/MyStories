@@ -13,7 +13,7 @@ $data = $response->fetch();
 
 $_SESSION['storyStart'] = $data['ste_id'];
 
-if ($_GET['new'] == 1) {
+if ($_GET['new'] == 1) { //est effectué si l'utilisateur clique sur le bouton démarrer d'une histoire ou le bouton rejouer.
     $requete = "SELECT * FROM story where 
     sto_id = ?";
     $response = $bdd->prepare($requete);

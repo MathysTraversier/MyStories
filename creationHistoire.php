@@ -34,7 +34,7 @@
         $choices = $response->fetchAll();
     }
 
-    if ($_SESSION['creation'] == 1) {
+    if ($_SESSION['creation'] == 1) { //on affiche une page différente selon l'étape de création de l'histoire.
     ?>
         <div class="container mt-5 mb-5">
             <div id="pageCreation" class="card page p-5">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="couverture">Couverture</label><br />
-                        <input class="form-control" type="file" name="couverture" accept="image/*" required />
+                        <input class="form-control" type="file" name="couverture" accept="image/*" />
                     </div>
                     <div class="text-center mb-2 mt-5">
                         <input class="btn btn-sm me-2 btnRouge p-2 pe-3 ps-3" type="submit" value="Créer" />

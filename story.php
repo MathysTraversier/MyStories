@@ -37,7 +37,7 @@
     $response->execute(array($_SESSION['sto_id'], $step['ste_choiceType']));
     $choices = $response->fetchAll();
 
-    if (isset($_SESSION['saveLife']) && !$_SESSION['saveLife']) {
+    if (isset($_SESSION['saveLife']) && !$_SESSION['saveLife']) { //Cette section n'est pas effectuée si l'utilisateur reprend une histoire en cours.
         if ($step['ste_lossPV']) {
             $_SESSION['lives']--;
         } else if ($step['ste_end'] && !$step['ste_victory']) {

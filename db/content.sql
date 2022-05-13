@@ -123,6 +123,6 @@ insert into relation (cho_id,cho_related,ste_id) values
 
 
 insert into user (usr_name,usr_email,usr_password,usr_admin) values
-("correcteur","blabla@gmail.com","mdp_correcteur_1234",0);
+("correcteur","blabla@gmail.com","$2y$10$jXpvLcb8y3WVhDnLOB5bt.d9Vpu2by.je9PaIY8j5ZRnvt0B6Yphm",0);
 insert into user (usr_name,usr_email,usr_password,usr_admin) values
-("correcteur_admin","blabla1@gmail.com","mdp_correcteur_1234",1);
+("correcteur_admin","blabla1@gmail.com","$2y$10$xwHNOcoZX3ov7/U10Uj6k.i0gO7PMuA9tkBjObi2iPH2qBigACM5G",1);

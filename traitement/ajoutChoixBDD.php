@@ -2,7 +2,7 @@
 session_start();
 require("../includes/connect.php");
 
-if (isset($_POST['envoyer'])) {
+if (isset($_POST['envoyer'])) { // est effectué si on continue à ajouter des choix
     $_SESSION['cho_ste']++;
     for ($i = 1; $i <= $_SESSION['compteurChoix']; $i++) {
         if (isset($_POST['choix' . $i])) {
@@ -31,7 +31,7 @@ if (isset($_POST['envoyer'])) {
     $_SESSION['compteurPara'] = 1;
     $_SESSION['compteurChoix'] = 2;
     header('Location: ../creationHistoire.php');
-} else {
+} else { //est effectué si l'on veut passer à la page de mise en relation des choix avec leur paragraphe d'arrivée.
     $_SESSION['creation']++;
     header('Location: ../creationHistoire.php');
 }
