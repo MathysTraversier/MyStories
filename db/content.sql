@@ -113,9 +113,9 @@ insert into relation (cho_id,cho_related,ste_id) values
 insert into relation (cho_id,cho_related,ste_id) values
 (14, null, 17);
 insert into relation (cho_id,cho_related,ste_id) values
-(15, null, 18);
+(15, 11, 18);
 insert into relation (cho_id,cho_related,ste_id) values
-(15, null, 21);
+(15, 12, 21);
 insert into relation (cho_id,cho_related,ste_id) values
 (16, null, 19);
 
